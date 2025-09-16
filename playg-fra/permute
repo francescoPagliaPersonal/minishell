@@ -1,0 +1,15 @@
+the new fd is: 3I'm writing something to the new file!
+the new fd is: 3I'm writing something to the new file!
+the new fd is: 3  |  I'm writing something to the new file!
+the new fd is: 3  test
+|  I'm writing something to the new file!
+the new fd is: 3  this is a new line
+the new fd is: 3  another line.
+the new fd is: 3  this is a line
+and this is another one
+~
+d this is another one
+the new fd is: 3  what is going on?
+the return is not enough to do the get next line or?
+~
+e return is not enough to do the get next line or?
