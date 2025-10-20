@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 11:16:42 by vmanuyko          #+#    #+#             */
-/*   Updated: 2025/10/20 19:25:20 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/10/20 19:34:11 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	heredoc(char *limiter, t_shell *shell)
 			if (process_line(&line, shell) == -1)
 				return (free(line), close (fd[0]), close (fd[1]), -1);
 		}
-		if (!ft_strncmp(line, limiter, ft_strlen(limiter)))
+		if (!ft_strncmp(line, limiter, ft_strlen(limiter) + 1))
 			return (close(fd[1]), fd[0]);
 		write(fd[1], line, ft_strlen(line));
 		write(fd[1], "\n", 1);

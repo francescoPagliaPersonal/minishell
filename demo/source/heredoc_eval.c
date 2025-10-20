@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:50:21 by vmanuyko          #+#    #+#             */
-/*   Updated: 2025/10/20 14:34:23 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/10/20 19:30:52 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int argc, char **argv, char **envp)
 				break ;
 			}
 			printf("%s", line);
+			free(line);
 		}
 	}
 	free(shell.env);
