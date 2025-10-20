@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 11:16:42 by vmanuyko          #+#    #+#             */
-/*   Updated: 2025/10/20 19:03:40 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/10/20 19:25:20 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,21 @@ static int	is_quoted(char *str)
 	return (0);
 }
 
+/*
+ * Processes the line by expanding the env values if found.
+ * Return value:
+ * -1 on error, 0 on success.
+*/
 static int	process_line(char **line, t_shell *shell)
 {
 	char	*expand_line;
 
-	expand_line = 
+	expand_line = str_expand(dollar, shell->env, *line);
+	if (!expand_line)
+		return (-1);
+	free (*line);
+	*line = expand_line;
+	return (0);
 }
 
 int	heredoc(char *limiter, t_shell *shell)
@@ -59,7 +69,7 @@ int	heredoc(char *limiter, t_shell *shell)
 		expand = 0;
 	}
 	if (pipe(fd) == -1)
-		return(perror(ER_PIPE), -1);
+		return (perror(ER_PIPE), -1);
 	while (1)
 	{
 		line = readline(">");
