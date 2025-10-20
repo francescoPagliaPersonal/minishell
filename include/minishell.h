@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 09:13:23 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/13 12:03:38 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/10/20 13:57:15 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <fcntl.h>
 
 # include <libft.h>
 # include "ms_structs.h"
@@ -73,12 +74,19 @@ char	**str_split_by_set(char *str, char *set, bool eval_quote);
  */
 int	get_command(t_shell *shell);
 
-/*			INIT			*/
 /*
  * Initialisation of the t_shell struct;
  * RETURN:
  * 0 on failure, 1 on success;
  */
 int	init_shell(t_shell *shell, char **env);
+
+/*
+ * Reads input from stdin until a delimiter is met.
+ * If delimiter was quoted expands the environment variables
+ * Return value:
+ * On success a read fd prom the pipe, upon errors -1;
+*/
+int	heredoc(char *limiter, t_shell *shell);
 
 #endif

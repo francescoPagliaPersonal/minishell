@@ -6,7 +6,7 @@
 #    By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 12:10:06 by fpaglia           #+#    #+#              #
-#    Updated: 2025/10/13 11:54:18 by fpaglia          ###   ########.fr        #
+#    Updated: 2025/10/20 11:34:54 by vmanuyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ STRINGS = arr_deepcpy.c arr_print.c  arr_to_str.c arr_free.c arr_size.c \
 
 ENVIRON = env_getid.c env_getvalue.c
 
-INPUT = prompt.c
+INPUT = prompt.c init.c heredoc.c
 
 # Add source paths to files 
 STRINGS_SRC = $(addprefix $(SRC_DIR)/strings/, $(STRINGS))
@@ -52,7 +52,7 @@ $(LIBFT) :
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@ mkdir -p $(dir $@)
 	$(CC) $(FLAGS) $(INCLUDES) -o $@ -c $^
-$(MINI) : $(OBJ) 
+$(MINI) : $(OBJ)
 	@ mkdir -p $(dir $@)
 	ar rcs $@ $^
 
