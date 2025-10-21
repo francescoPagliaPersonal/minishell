@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_split_paths.c                                  :+:      :+:    :+:   */
+/*   red_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 14:27:25 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/20 10:39:36 by fpaglia          ###   ########.fr       */
+/*   Created: 2025/10/17 23:24:40 by fpaglia           #+#    #+#             */
+/*   Updated: 2025/10/17 23:24:59 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "ms_strings.h"
+#include "ms_structs.h"
 #include <minishell.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-/* This little demostrator uses the split by set with only one item to demonstrate
- * that it has an identical behavior to the split by char.
- */
-int main()
+t_red	*red_init(t_redtype type, char *str)
 {
-	char **arr;
+	t_red *item;
 
-	arr = str_split_by_set(getenv("PATH"), ":", 1);
-	arr_print(arr);
+	item = (t_red *)calloc(1, sizeof(t_red));
+	if (item == NULL)
+		return (NULL);
+	item->type = type;
+	item->val = str;
+	return (item);
 }

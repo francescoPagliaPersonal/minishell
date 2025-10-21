@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_split_paths.c                                  :+:      :+:    :+:   */
+/*   ms_redirections.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 14:27:25 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/20 10:39:36 by fpaglia          ###   ########.fr       */
+/*   Created: 2025/10/18 01:50:34 by fpaglia           #+#    #+#             */
+/*   Updated: 2025/10/18 01:50:59 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#ifndef MS_REDIRECTIONS_H
+# define MS_REDIRECTIONS_H
 
-/* This little demostrator uses the split by set with only one item to demonstrate
- * that it has an identical behavior to the split by char.
- */
-int main()
-{
-	char **arr;
+#include "ms_structs.h"
 
-	arr = str_split_by_set(getenv("PATH"), ":", 1);
-	arr_print(arr);
-}
+void	red_perror(char token);
+t_red	*red_init(t_redtype type, char *str);
+void	red_free(void *item);
+t_red	*red_str2struct(char *str);
+
+#endif

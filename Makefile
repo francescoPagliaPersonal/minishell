@@ -6,7 +6,7 @@
 #    By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 12:10:06 by fpaglia           #+#    #+#              #
-#    Updated: 2025/10/20 19:19:16 by vmanuyko         ###   ########.fr        #
+#    Updated: 2025/10/21 18:48:10 by vmanuyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,12 @@ LIB_DIR := libs
 
 # Groups of source files 
 STRINGS = arr_deepcpy.c arr_print.c  arr_to_str.c arr_free.c arr_size.c \
-		  str_clearquotes.c str_split_by_c.c str_split_by_set.c \
-		  str_isquoted.c \
-		  tar_popone.c tar_init.c tar_putone.c \
-		  str_expand.c str_expand_quotes.c str_expand_dollar.c 
+		  arr_double.c \
+		  str_split_by_set.c str_isquoted.c \
+		  str_clearquotes.c \
+		  str_expand.c str_expand_quotes.c str_expand_dollar.c \
+		  tar_init.c tar_free.c tar_popone.c tar_linkone.c \
+		  tar_putstr.c tar_putred.c 
 
 ENVIRON = env_getid.c env_getkey.c env_getvalue.c \
 		  env_entry_update.c  env_entry_remove.c  
@@ -38,11 +40,13 @@ INPUT = prompt.c heredoc.c init.c free_shell.c free_prog.c
 STRINGS_SRC = $(addprefix $(SRC_DIR)/strings/, $(STRINGS))
 ENVIRON_SRC = $(addprefix $(SRC_DIR)/environment/, $(ENVIRON))
 INPUT_SRC = $(addprefix $(SRC_DIR)/input/, $(INPUT))
+REDIRECT_SRC = $(addprefix $(SRC_DIR)/redirections/, $(REDIRECT))
 INIT_SRC = $(addprefix $(SRC_DIR)/init/, $(INIT))
 MAIN_SRC = $(addprefix $(SRC_DIR)/, $(MAIN))
 
 # Collect all the c file in one variable
-SRC = $(STRINGS_SRC) $(ENVIRON_SRC) $(INPUT_SRC) $(INIT_SRC) $(MAIN_SRC)
+SRC = $(STRINGS_SRC) $(ENVIRON_SRC) $(INPUT_SRC) $(REDIRECT_SRC) \
+	  $(INIT_SRC) $(MAIN_SRC)
 OBJ = $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRC:.c=.o))
 
 LIBFT := $(LIB_DIR)/libft/libft.a

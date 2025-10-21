@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:22:40 by vmanuyko          #+#    #+#             */
-/*   Updated: 2025/10/20 13:22:08 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:48:44 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define ER_QUOTES "Error\nreadline: open quotes detected"
 # define ER_READLINE "Error\nreadline"
 # define ER_PROMPT "Error\nget_prompt"
+# define ER_SINTAX "Error\nminishell:  syntax error near unexpected token `"
 # define ER_PIPE "Error\npipe"
 
 #endif
