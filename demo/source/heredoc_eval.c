@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:50:21 by vmanuyko          #+#    #+#             */
-/*   Updated: 2025/10/21 18:54:17 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/10/23 18:47:06 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	main(int argc, char **argv, char **envp)
 	char	*line;
 	t_shell shell;
 	
-	(void)argc;
+	if (argc != 2)
+		return (printf("Needs 1 limiter\n"), 1);
 	shell.env = malloc(sizeof(t_arr));
 	if(!shell.env)
 		return (1);
@@ -40,6 +41,5 @@ int	main(int argc, char **argv, char **envp)
 			free(line);
 		}
 	}
-	free(shell.env);
-	return (0);
+	return (free(shell.env),0);
 }

@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 11:16:42 by vmanuyko          #+#    #+#             */
-/*   Updated: 2025/10/21 18:51:48 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/10/23 19:22:23 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,36 @@ static int	process_line(char **line, t_shell *shell, int expand)
 int	heredoc(char *limiter, t_shell *shell)
 {
 	int		expand;
-	int		fd[2];
+	int		fd;
 	char	*line;
 
 	expand = 1;
 	if (is_quoted(limiter))
 		expand = 0;
-	if (pipe(fd) == -1)
-		return (perror(ER_PIPE), -1);
+	limiter = str_expand(quotes, shell->env->arr, limiter, 0);
+	if (!limiter)
+		return (-1);
+	fd = open("/tmp/heredoc_tmp", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+		return (-1);
 	while (1)
 	{
 		line = readline(">");
 		if (!line)
-			return (close (fd[0]), close (fd[1]), -1);
+			return (close (fd), -1);
 		if (ft_strchr(line, '$') && expand == 1)
 		{
 			if (process_line(&line, shell, expand) == -1)
-				return (free(line), close (fd[0]), close (fd[1]), -1);
+				return (free(line), close (fd), -1);
 		}
 		if (!ft_strncmp(line, limiter, ft_strlen(limiter) + 1))
-			return (close(fd[1]), fd[0]);
-		write(fd[1], line, ft_strlen(line));
-		write(fd[1], "\n", 1);
+		{
+			close (fd);
+			fd = open("/tmp/heredoc_tmp", O_RDONLY);
+			return (fd);
+		}
+		write(fd, line, ft_strlen(line));
+		write(fd, "\n", 1);
 		free (line);
 	}
 	return (-1);
