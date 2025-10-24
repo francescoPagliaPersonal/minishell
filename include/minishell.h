@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 09:13:23 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/20 19:08:30 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/10/24 17:10:53 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,6 @@ int	init_shell(t_shell *shell, char **env);
  * Return value:
  * On success a read fd prom the pipe, upon errors -1;
 */
-int	heredoc(char *limiter, t_shell *shell);
+int	heredoc(char *raw_limiter, char *limiter, t_shell *shell);
 
 #endif
