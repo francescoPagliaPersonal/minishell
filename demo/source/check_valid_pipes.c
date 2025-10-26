@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_pipes.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 15:42:56 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/23 10:15:01 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/10/26 20:19:34 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_commands.h"
-#include "ms_init.h"
-#include "ms_structs.h"
 #include <minishell.h>
 
 /* This small demo evaluate if pipes are somehow connected to some kind of data.

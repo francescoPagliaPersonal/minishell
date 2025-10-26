@@ -6,7 +6,7 @@
 #    By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 12:10:06 by fpaglia           #+#    #+#              #
-#    Updated: 2025/10/26 17:14:10 by vmanuyko         ###   ########.fr        #
+#    Updated: 2025/10/26 20:22:55 by vmanuyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ STRINGS = arr_deepcpy.c arr_print.c  arr_to_str.c arr_free.c arr_size.c \
 ENVIRON = env_getid.c env_getkey.c env_getvalue.c \
 		  env_entry_update.c  env_entry_remove.c  
 
-INPUT = prompt.c heredoc.c init.c free_shell.c free_prog.c
+INPUT = prompt.c heredoc.c init.c free_shell.c free_prog.c reset_shell.c \
+		init_shell.c
+
 
 # Add source paths to files 
 STRINGS_SRC = $(addprefix $(SRC_DIR)/strings/, $(STRINGS))

@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:50:21 by vmanuyko          #+#    #+#             */
-/*   Updated: 2025/10/24 17:13:04 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/10/26 20:02:36 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv, char **envp)
 	char	*line;
 	t_shell shell;
 	char	*limiter;
+	char	*tmp_filename;
 	
 	if (argc != 2)
 		return (printf("Needs 1 limiter\n"), 1);
@@ -26,9 +27,14 @@ int	main(int argc, char **argv, char **envp)
 	limiter = str_expand(quotes, shell.env, argv[1], 0);
 	if (!limiter)
 		return (1);
-	fd = heredoc(argv[1], limiter, &shell);
+	tmp_filename = heredoc(argv[1], limiter, &shell);
+	if (!tmp_filename)
+		return (free(limiter), 1);
+	fd = open (tmp_filename, O_RDONLY);
+	unlink(tmp_filename);
+	free (tmp_filename);
 	if (fd == -1)
-		printf(("Error by heredoc\n"));
+		return (free(limiter), 1);
 	else
 	{
 		while (1)

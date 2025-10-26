@@ -1,10 +1,7 @@
-#include "minishell.h"
-#include "ms_init.h"
-#include "ms_strings.h"
-#include "ms_structs.h"
+#include <minishell.h>
 
 /* 
- * This demosntrator showcase how to build the array of redirection 
+ * This demonstrator showcase how to build the array of redirection 
  * for each t_prog (or string already split by pipe).
  * use this string as first example: 
  * "<$he'll'o" "<<'you'" ">b' 'la" ">>blabla" "<<<"
