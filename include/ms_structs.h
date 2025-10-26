@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 09:13:51 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/20 13:30:26 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/10/23 13:52:22 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_prog
 	t_pipe	go_to;
 	int		f_stdin;
 	int		f_stdout;
+	t_arr	*redirect;
 	int		fd_io[2];
 	t_arr	*prog;
 	int		complete;
@@ -90,17 +91,17 @@ typedef struct s_shell
  * 
  */
 
- /*
-  * t_redtype is a explicit list of the 4 redirection methods that are to be
-  * implemented. they are self expalantory
-  */
- typedef enum e_redtype
+/*
+* t_redtype is a explicit list of the 4 redirection methods that are to be
+* implemented. they are self expalantory
+*/
+typedef enum e_redtype
 {
+	none,
 	in_file,
 	in_heredoc,
 	out_create,
-	out_append,
-	error
+	out_append
 }	t_redtype;
 
 /*

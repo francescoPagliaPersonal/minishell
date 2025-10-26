@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 09:13:23 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/24 17:10:53 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/10/26 17:13:40 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@
 # include "ms_init.h"
 # include "err_mes.h"
 # include "ms_redirections.h"
+# include "ms_commands.h"
 
 # define MS_METACHAR "\n|&;()<>"
 # define MS_BLANKS " \t\n"
-# define MS_METAERR "&;()\\[]"
+# define MS_METAERR "&;()\\"
 
 /*			STRINGS			*/
 
@@ -51,9 +52,16 @@ int		str_isquoted(char c);
 
 /* 
  * Collapses a NULL terminated array to a single string.
- * In the process the memory of the original array is freed
+ * if add_space is set to 1 the strings will be concatenated with an 
+ * additional space char, if set to 0 the concatenation will be contiguous.
+ * 
+ * In the process the memory of the original array is freed.
+ * 
+ * RETURNS:
+ * A pointer to a new string on success
+ * NULL on faiullure. 
  */
-char	*arr_to_str(char **arr);
+char	*arr_to_str(char **arr, int add_space);
 
 /* 
  * Given a string, splits it into an array using c as the delimiter.

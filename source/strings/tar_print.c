@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init.h                                          :+:      :+:    :+:   */
+/*   tar_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 11:10:52 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/23 13:50:18 by fpaglia          ###   ########.fr       */
+/*   Created: 2025/10/24 11:05:42 by fpaglia           #+#    #+#             */
+/*   Updated: 2025/10/24 11:10:10 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MS_INIT_H
-# define MS_INIT_H
+#include <minishell.h>
 
-# include "ms_structs.h"
+void	tar_print_char(t_arr *tar)
+{
+	int	i;
 
-void	free_shell(t_shell *sh);
-void	reset_shell(t_shell *sh);
-
-#endif
+	i = 0;
+	while (i < tar->size)
+	{
+		printf("%s\n", (char *)tar->arr[i]);
+		i++;
+	}
+}

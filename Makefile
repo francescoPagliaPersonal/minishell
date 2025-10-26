@@ -6,7 +6,7 @@
 #    By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 12:10:06 by fpaglia           #+#    #+#              #
-#    Updated: 2025/10/21 18:48:10 by vmanuyko         ###   ########.fr        #
+#    Updated: 2025/10/26 17:14:10 by vmanuyko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ STRINGS = arr_deepcpy.c arr_print.c  arr_to_str.c arr_free.c arr_size.c \
 		  str_split_by_set.c str_isquoted.c \
 		  str_clearquotes.c \
 		  str_expand.c str_expand_quotes.c str_expand_dollar.c \
-		  tar_init.c tar_free.c tar_popone.c tar_linkone.c \
+		  tar_init.c tar_free.c tar_print.c \
+		  tar_popone.c tar_linkone.c \
 		  tar_putstr.c tar_putred.c 
 
 ENVIRON = env_getid.c env_getkey.c env_getvalue.c \
@@ -41,11 +42,13 @@ STRINGS_SRC = $(addprefix $(SRC_DIR)/strings/, $(STRINGS))
 ENVIRON_SRC = $(addprefix $(SRC_DIR)/environment/, $(ENVIRON))
 INPUT_SRC = $(addprefix $(SRC_DIR)/input/, $(INPUT))
 REDIRECT_SRC = $(addprefix $(SRC_DIR)/redirections/, $(REDIRECT))
+COMMANDS_SRC = $(addprefix $(SRC_DIR)/commands/, $(COMMANDS))
 INIT_SRC = $(addprefix $(SRC_DIR)/init/, $(INIT))
 MAIN_SRC = $(addprefix $(SRC_DIR)/, $(MAIN))
 
 # Collect all the c file in one variable
 SRC = $(STRINGS_SRC) $(ENVIRON_SRC) $(INPUT_SRC) $(REDIRECT_SRC) \
+	  $(COMMANDS_SRC) \
 	  $(INIT_SRC) $(MAIN_SRC)
 OBJ = $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SRC:.c=.o))
 

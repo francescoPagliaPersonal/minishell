@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init.h                                          :+:      :+:    :+:   */
+/*   cmd_fillheredoc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 11:10:52 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/23 13:50:18 by fpaglia          ###   ########.fr       */
+/*   Created: 2025/10/23 12:21:33 by fpaglia           #+#    #+#             */
+/*   Updated: 2025/10/23 13:32:18 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MS_INIT_H
-# define MS_INIT_H
+#include <minishell.h>
 
-# include "ms_structs.h"
+int	cmd_fillheredoc(t_red *tmp)
+{
+	char	*path;
 
-void	free_shell(t_shell *sh);
-void	reset_shell(t_shell *sh);
-
-#endif
+	// path = heredoc(tmp->raw, tmp->val);
+	path = ft_strjoin("MISSING HEREDOC | pattern: ", tmp->val);
+	if (path == NULL)
+		return (0);
+	free(tmp->val);
+	tmp->val = path;
+	return (1);
+}
