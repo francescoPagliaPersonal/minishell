@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:02:53 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/24 09:27:13 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/11/06 13:09:50 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	free_shell(t_shell *sh)
 		programs_free(sh->items, sh->count);
 	sh->items = NULL;
 	sh = NULL;
-	rl_clear_history;
+	rl_clear_history();
 }
