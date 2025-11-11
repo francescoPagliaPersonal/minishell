@@ -14,7 +14,7 @@
 #include "ms_structs.h"
 #include <minishell.h>
 
-int g_return = 0;
+sig_atomic_t volatile g_return = 0;
 
 int main(int ac, char **av, char **envp)
 {
