@@ -6,12 +6,15 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 11:06:57 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/11/20 12:53:07 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/11/20 14:45:55 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "ms_strings.h"
 #include "ms_structs_support.h"
 #include <minishell.h>
+#include <time.h>
 
 char	**split_byequal(char *str);
 
@@ -44,24 +47,40 @@ static char	**clear_export(char **arr, t_arr *env)
 
 static char	**clear_dollar(char **arr, t_arr *env)
 {
-	char	*line;
+	// char	*line;
 	char	*line_d;
-	char	**arr_in;
-	char	**arr_out;
-
-	arr_in = arr_deepcpy(arr);
-	line = arr_to_str(arr_in, 1);
-	if (line == NULL)
-		return (0);
-	line_d = str_expand(dollar, env, line, 1);
-	free(line);
-	if (line_d == NULL)
-		return (0);
-	arr_out = str_split_by_set(line_d, MS_BLANKS, 1);
-	free(line_d);
-	if (arr_out == NULL)
+	char	**tmp;
+	// char	**arr_in;
+	// char	**arr_out;
+	int i;
+	tmp = (char **)ft_calloc(arr_size(arr) + 1, sizeof(char *));
+	if (tmp == NULL)
 		return (NULL);
-	return (arr_out);
+	i = 0;
+	while (arr[i] != NULL)
+	{
+		line_d = str_expand(dollar, env, arr[i], 1);
+		if (line_d == NULL)
+			return (arr_free(tmp), NULL);
+		tmp[i] = line_d;
+		line_d = NULL;
+		i++;
+	}
+	return (tmp);
+
+	// arr_in = arr_deepcpy(arr);
+	// line = arr_to_str(arr_in, 1);
+	// if (line == NULL)
+	// 	return (0);
+	// line_d = str_expand(dollar, env, line, 1);
+	// free(line);
+	// if (line_d == NULL)
+	// 	return (0);
+	// arr_out = str_split_by_set(line_d, MS_BLANKS, 1);
+	// free(line_d);
+	// if (arr_out == NULL)
+	// 	return (NULL);
+	// return (arr_out);
 }
 
 // static int	clear_quotes(char **arr, t_arr *env)
@@ -90,11 +109,12 @@ int	cmd_parse_progs(t_prog *proc, t_arr *env)
 	if (ft_strncmp((char *)proc->prog->arr[0], "export", 6) == 0)
 		arr = clear_export((char **)proc->prog->arr, env);
 	else
-		arr = clear_dollar((char **)proc->prog->arr, env);
+		arr = clear_dollar(((char **)proc->prog->arr), env);
 	if (arr == NULL)
 		return (0);
 	// if (!clear_quotes(arr, env))
 	// 	return (arr_free(arr), 0);
+	// arr_print(arr, '\n', 1);
 	tar_free(proc->prog);
 	tar = tar_init(arr, free);
 	arr_free(arr);
