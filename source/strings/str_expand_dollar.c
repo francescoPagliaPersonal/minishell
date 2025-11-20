@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 09:50:13 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/11/11 15:43:13 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/11/20 13:17:17 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	save_substr(char **str, char **end, t_quote *data)
 	line = ft_strncpy(*str, *end - *str + 1);
 	if (line == NULL)
 		return (0);
-	if (!tar_putstr(data->expand, line))
+	if (!tar_putinfostr(data->expand, line, 0))
 		return (free(line), 0);
 	free(line);
 	*str = *end + 1;
@@ -42,7 +42,7 @@ static int	expand_dollar_special(char **str, char **end, t_quote *data)
 		line = ft_itoa(g_return);
 	if (line == NULL)
 		return (0);
-	if (!tar_putstr(data->expand, line))
+	if (!tar_putinfostr(data->expand, line, 1))
 		return (free(line), 0);
 	free(line);
 	(*end)++;
@@ -66,12 +66,12 @@ static int	expand_dollar_envvar(char **str, char **end, t_quote *data)
 		return (0);
 	if (value != NULL)
 	{
-		if (!tar_putstr(data->expand, value))
+		if (!tar_putinfostr(data->expand, value, 1))
 			return (free(key), free(value), 0);
 		free(value);
 	}
 	else
-		if (!tar_putstr(data->expand, ""))
+		if (!tar_putinfostr(data->expand, "", 0))
 			return (free(key), 0);
 	free(key);
 	*str = *end + 1;

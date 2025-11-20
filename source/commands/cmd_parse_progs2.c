@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:25:53 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/11/19 15:28:47 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/11/20 09:42:20 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**split_byequal(char *str)
 	int		quotes;
 
 	equal_ptr = ft_strchr(str, '=');
-	if (equal_ptr == NULL)
+	if (equal_ptr == NULL || *str == '=')
 		return (str_split_by_set(str, MS_BLANKS, 1));
 	tmp_str = ft_strncpy(str, equal_ptr - str + 1);
 	if (tmp_str == NULL)

@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 11:06:57 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/11/19 15:53:05 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/11/20 12:53:07 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,23 @@ static char	**clear_dollar(char **arr, t_arr *env)
 	return (arr_out);
 }
 
-static int	clear_quotes(char **arr, t_arr *env)
-{
-	int		i;
-	char	*line;
+// static int	clear_quotes(char **arr, t_arr *env)
+// {
+// 	int		i;
+// 	char	*line;
 
-	i = 0;
-	while (arr[i] != NULL)
-	{
-		line = str_expand(quotes, env, arr[i], 0);
-		if (line == NULL)
-			return (0);
-		free(arr[i]);
-		arr[i] = line;
-		i++;
-	}
-	return (1);
-}
+// 	i = 0;
+// 	while (arr[i] != NULL)
+// 	{
+// 		line = str_expand(quotes, env, arr[i], 0);
+// 		if (line == NULL)
+// 			return (0);
+// 		free(arr[i]);
+// 		arr[i] = line;
+// 		i++;
+// 	}
+// 	return (1);
+// }
 
 int	cmd_parse_progs(t_prog *proc, t_arr *env)
 {
@@ -93,8 +93,8 @@ int	cmd_parse_progs(t_prog *proc, t_arr *env)
 		arr = clear_dollar((char **)proc->prog->arr, env);
 	if (arr == NULL)
 		return (0);
-	if (!clear_quotes(arr, env))
-		return (arr_free(arr), 0);
+	// if (!clear_quotes(arr, env))
+	// 	return (arr_free(arr), 0);
 	tar_free(proc->prog);
 	tar = tar_init(arr, free);
 	arr_free(arr);

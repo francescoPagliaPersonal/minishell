@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 14:48:15 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/10/24 11:18:06 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/11/20 12:02:47 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ char	*arr_to_str(char **arr, int add_space)
 		return (NULL);
 	fill_string(arr, &str, add_space);
 	free(arr);
+	arr = NULL;
 	return (str);
 }
