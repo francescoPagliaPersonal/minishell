@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_prog.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 15:09:03 by vmanuyko          #+#    #+#             */
-/*   Updated: 2025/11/05 11:56:18 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2025/11/28 12:40:15 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	dup_fds(t_prog *item)
 		close (item->fd_io[0]);
 		item->fd_io[0] = -1;
 	}
+	else
+		close(STDIN_FILENO);
 	if (item->fd_io[1] != -1 && item->fd_io[1] != 1)
 	{
 		if ((dup2(item->fd_io[1], STDOUT_FILENO)) == -1)
@@ -77,6 +79,8 @@ int	dup_fds(t_prog *item)
 		close (item->fd_io[1]);
 		item->fd_io[1] = -1;
 	}
+	else
+		close(STDOUT_FILENO);
 	return (1);
 }
 
