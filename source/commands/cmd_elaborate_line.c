@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 12:27:14 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/11/25 13:52:52 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/12/05 15:01:27 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ static int	merge_by_connectivity(t_arr *arr, t_arr *istr)
 	t_istr	*tmp;
 	int		connect_last;
 
-	i = 0;
+	i = -1;
 	connect_last = 0;
-	while (i < istr->size)
+	while (++i < istr->size)
 	{
 		tmp = (t_istr *)istr->arr[i];
-		if (tmp->type != 0)
+		if (tmp->type != 0 || (tmp->str[0] == '\0' && tmp->connect > 0))
 		{
 			if (!append_or_connect(arr, tmp->str, connect_last))
 				return (0);
@@ -80,7 +80,6 @@ static int	merge_by_connectivity(t_arr *arr, t_arr *istr)
 			if (!split_and_connect1st(arr, tmp))
 				return (0);
 		}
-		i++;
 	}
 	return (1);
 }

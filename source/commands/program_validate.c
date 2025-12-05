@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:51:58 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/11/28 09:32:18 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/12/05 15:47:54 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		is_valid_file(char *exec);
 void	print_correct_error(char *exec);
+void	**find_program(char **arr, int size);
 
 /* Verify if the executable matches any of the available built ins.
  * If true set the param bltin of the t_prog* to the appropriate 
@@ -150,7 +151,8 @@ int	program_validate(t_shell *sh, t_prog *proc)
 
 	if (proc->prog->size == 0)
 		return (1);
-	exec = &proc->prog->arr[0];
+	// exec = &proc->prog->arr[0];
+	exec = find_program((char **)proc->prog->arr, proc->prog->size);
 	if (!(ft_strchr(*exec, '/') != NULL))
 	{
 		if (((char **)exec)[0][0] != '\0')

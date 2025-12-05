@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:40:49 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/11/25 12:47:41 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/12/05 15:47:42 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,18 @@ int	is_valid_file(char *exec)
 	if (!(S_ISREG(info.st_mode) || S_ISLNK(info.st_mode)))
 		return (0);
 	return (1);
+}
+
+void	**find_program(char **arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (arr[i][0] != '\0')
+			return ((void **)&arr[i]);
+		i++;
+	}
+	return ((void **)arr);
 }

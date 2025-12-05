@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 12:35:12 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/11/25 13:53:26 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/12/05 14:23:56 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	check_connectivity(char *str)
 	size_t	len;
 	int		conn;
 
+	if (!*str)
+		return (3);
 	conn = 0;
 	if (ft_strchr(MS_BLANKS, *str) == NULL)
 		conn++;

@@ -6,7 +6,7 @@
 /*   By: fpaglia <fpaglia@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 11:06:57 by fpaglia           #+#    #+#             */
-/*   Updated: 2025/11/25 13:44:07 by fpaglia          ###   ########.fr       */
+/*   Updated: 2025/12/05 15:34:28 by fpaglia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ int	cmd_parse_progs(t_prog *proc, t_shell *sh)
 		tar = cmd_expand_prog(proc->prog, sh);
 	if (tar == NULL)
 		return (0);
+	if (tar->size == 1 && ((char **)tar->arr)[0][0] == '\0')
+	{
+		arr_free((char **)tar->arr);
+		tar->arr = NULL;
+		tar->size = 0;
+	}
 	tar_free(proc->prog);
 	proc->prog = tar;
 	return (1);
