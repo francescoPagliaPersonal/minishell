@@ -4,6 +4,9 @@
 A team project developed in collaboration with: \
 [Vesta Manuyko](https://github.com/VestaManuyko)
 
+The following is the preliminary idea I developed to design the data collection task.
+https://docs.google.com/drawings/d/16t0WSF3BWcPAQfsb0nE1qJsWODp-z7dGsIIhK7pudt4/edit?usp=sharing
+
 ## References:
 
 **Git 42 guide** \
